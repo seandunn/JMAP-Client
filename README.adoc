@@ -1,0 +1,66 @@
+:toc: macro
+:toclevels: 5
+:figure-caption!:
+
+= Jmap
+
+toc::[]
+
+== Features
+
+== Screencasts
+
+== Requirements
+
+. link:https://www.ruby-lang.org[Ruby].
+
+== Setup
+
+To set up the project, run:
+
+[source,bash]
+----
+bin/setup
+----
+
+== Usage
+
+== Development
+
+To contribute, run:
+
+[source,bash]
+----
+git clone 
+cd jmap
+bin/setup
+----
+
+You can also use the IRB console for direct access to all objects:
+
+[source,bash]
+----
+bin/console
+----
+
+== Tests
+
+To test, run:
+
+[source,bash]
+----
+bin/rake
+----
+
+== link:[License]
+
+== link:[Security]
+
+== link:[Contributions]
+
+== link:[Versions]
+
+== Credits
+
+* Built with link:https://alchemists.io/projects/rubysmith[Rubysmith].
+* Engineered by link:[].
