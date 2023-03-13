@@ -1,0 +1,55 @@
+{
+  "state": "cyrus-46184;p-25545e8ad8",
+  "username": "test_user@email_provider.com",
+  "eventSourceUrl": "https://api.email_provider.com/jmap/event/",
+  "capabilities": {
+    "urn:ietf:params:jmap:core": {
+      "maxSizeRequest": 10000000,
+      "maxObjectsInGet": 4096,
+      "maxObjectsInSet": 4096,
+      "maxConcurrentRequests": 10,
+      "maxConcurrentUpload": 10,
+      "collationAlgorithms": [
+        "i;ascii-numeric",
+        "i;ascii-casemap",
+        "i;octet"
+      ],
+      "maxSizeUpload": 250000000,
+      "maxCallsInRequest": 50
+    },
+    "urn:ietf:params:jmap:mail": {}
+  },
+  "primaryAccounts": {
+    "urn:ietf:params:jmap:core": "u11a6c4117",
+    "urn:ietf:params:jmap:mail": "u11a6c4117"
+  },
+  "apiUrl": "https://api.email_provider.com/jmap/api/",
+  "uploadUrl": "https://api.email_provider.com/jmap/upload/{accountId}/",
+  "downloadUrl": "https://www.email_providerusercontent.com/jmap/download/{accountId}/{blobId}/{name}?type={type}",
+  "accounts": {
+    "u11a6c4117": {
+      "isPersonal": true,
+      "isReadOnly": true,
+      "name": "test_user@email_provider.com",
+      "userId": "user-12169136",
+      "accountCapabilities": {
+        "urn:ietf:params:jmap:core": {},
+        "urn:ietf:params:jmap:mail": {
+          "emailQuerySortOptions": [
+            "receivedAt",
+            "from",
+            "to",
+            "subject",
+            "size",
+            "header.x-spam-score"
+          ],
+          "mayCreateTopLevelMailbox": true,
+          "maxMailboxDepth": null,
+          "maxMailboxesPerEmail": 1000,
+          "maxSizeMailboxName": 490,
+          "maxSizeAttachmentsPerEmail": 50000000
+        }
+      }
+    }
+  }
+}
