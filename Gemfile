@@ -4,9 +4,9 @@ ruby File.read(".ruby-version").strip
 
 source "https://rubygems.org"
 
-gem "zeitwerk", "~> 2.6"
 gem "faraday"
 gem "oj"
+gem "zeitwerk", "~> 2.6"
 
 group :code_quality do
   gem "caliber", "~> 0.25"
