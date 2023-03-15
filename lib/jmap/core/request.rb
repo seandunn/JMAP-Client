@@ -5,9 +5,6 @@ module JMAP
     # Holds a list of method calls (Invocations) to be made against a JMAP
     # server in a single network call.
     class Request
-      # Core capability that all JMAP requests include.
-      CORE_URN = "urn:ietf:params:jmap:core"
-
       # The set of capabilities the client wishes to use. The client MAY
       # include capability identifiers even if the method calls it makes do
       # not utilise those capabilities.
@@ -21,9 +18,8 @@ module JMAP
       # server assigned when a record was successfully created.
       attr_reader :created_ids
 
-      def initialize(cap)
-        # TODO: capabilities should be set based on the Session object.
-        @using = [CORE_URN, cap]
+      def initialize(capabilities)
+        @using = capabilities
         @invocations = []
       end
 

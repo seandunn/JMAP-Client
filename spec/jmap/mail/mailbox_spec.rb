@@ -8,28 +8,21 @@ RSpec.describe JMAP::Mail::Mailbox do
   context "When getting all Mailboxes in a Account:" do
     let(:mailboxes_json) { JSON.parse File.read("spec/fixtures/mail/mailboxes.json") }
     let(:expected_request_json) do
-      expected_request_json = <<-END_JSON
       {
         "using": [ "urn:ietf:params:jmap:core", "urn:ietf:params:jmap:mail" ],
         "methodCalls": [
-          [ "Mailbox/get", { "accountId": "DUMMY-ACCOUNT-ID", "ids": null }, 0 ]
+          [ "Mailbox/get", { "accountId": "DUMMY-ACCOUNT-ID", "ids": nil }, 0 ]
         ]
-      }
-      END_JSON
+      }.to_json
     end
 
-    it "Makes a correctly formed request to the server." do
-      
-    end
+    it "Returns an Array of Mailbox objects."  do
+      stubs.post(client.api_url, expected_request_json) { [200, {}, mailboxes_json] }
+      mailboxes = client.mailboxes
 
-    it "Returns an Array of Mailbox objects." # do
-      # stubs.post("/jmap/api") do
-      # [ 200, { 'Content-Type': 'application/javascript' }, mailboxes_json ]
-      # end
-      #
-      # mailboxes = client.mailboxes
-      #
-      # expect(mailboxes.first).to eq(dummy_inbox)
-    # end
+      expect(mailboxes.size).to eq(7)
+      expect(mailboxes.first).to be_a JMAP::Mail::Mailbox
+      stubs.verify_stubbed_calls
+    end
   end
 end

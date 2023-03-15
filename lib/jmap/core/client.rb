@@ -4,13 +4,15 @@ require "faraday"
 
 module JMAP
   module Core
+    CAPABILITY = "urn:ietf:params:jmap:core"
+
     class Client
       attr_reader :url # The URL for the JMAP Session resource.
 
       def initialize(url:, bearer_token:, adapter: Faraday.default_adapter, stubs: nil)
         @url = url
 
-        @connection = Faraday.new url: do |builder|
+        @connection = Faraday.new(url:) do |builder|
           builder.request :authorization, "Bearer", bearer_token
           builder.request :json
 
@@ -20,19 +22,47 @@ module JMAP
         end
       end
 
+      def api_url
+        session.api_url
+      end
+
+      # Current assumption is that Core userId will be the same as for the
+      # other capabilities.  This is almost certainly wrong. :(
+      # TODO: In which case this should be based on which operation you're doing.
+      def account_id
+        session.primary_accounts[JMAP::Core::CAPABILITY]
+      end
+
       # @returns [JMAP::Core::Session]
       def session
         return @session if defined?(@session)
-        response = @connection.get url
+        response = connection.get url
         @session = Session.new(response.body)
+      end
+
+      def capabilities
+        session.capabilities.keys
       end
 
       # @returns [Array<JMAP::Mail::Mailbox>]
       def mailboxes
-        Request.new(self, Mailbox.all)
+        request = Request.new(capabilities)
+        request << JMAP::Mail::Mailbox.get(self)
+        res = connection.post(api_url) do |req|
+          req.body = request.to_json
+        end
+
+        raise BadResponseError if res.body == ""
+
+        response = JMAP::Core::Response.new(res.body)
+        response.method_responses.flatten
       end
 
+      private
+      attr_reader :connection
 
+      class Error < StandardError; end
+      class BadResponseError < StandardError; end
     end
   end
 end

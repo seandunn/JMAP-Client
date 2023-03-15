@@ -20,10 +20,25 @@ module JMAP
       # in the response).
       attr_accessor :method_call_id
 
-      def initialize(name:, arguments:)
+      def self.from_response(method_responses)
+        invocations = method_responses.map do |(name, arguments, method_call_id)|
+          new(name:, arguments:, method_call_id:).parse
+        end
+      end
+
+      def initialize(name:, arguments:, method_call_id: nil)
         @name = name
         @arguments = arguments
         @method_call_id = method_call_id
+      end
+
+      # Transforms the raw invocation arguments into a list of objects matching
+      # Invocation name.
+      def parse
+        klass = class_from_method_name
+        arguments["list"].map do |result|
+          klass.new(result)
+        end
       end
 
       def as_json(options=EMPTY_OPTIONS)
@@ -32,6 +47,13 @@ module JMAP
 
       def to_json(*options)
         as_json(*options).to_json(*options)
+      end
+
+      private
+
+      def class_from_method_name
+        klass_name = name.split("/").first
+        JMAP::REGISTERED_OBJECTS[klass_name]
       end
 
     end

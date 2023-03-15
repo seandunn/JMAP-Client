@@ -10,7 +10,7 @@ RSpec.describe JMAP::Core::Request do
     )
 
     request = described_class.new(
-      "urn:ietf:params:jmap:mail"
+      ["urn:ietf:params:jmap:core", "urn:ietf:params:jmap:mail"]
     )
 
     request << invocation
