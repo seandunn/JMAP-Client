@@ -1,0 +1,283 @@
+{
+  "latestClientVersion": "",
+  "methodResponses": [
+    [
+      "Mailbox/get",
+      {
+        "state": "52094",
+        "list": [
+          {
+            "isCollapsed": false,
+            "autoPurge": false,
+            "sort": [
+              {
+                "isAscending": false,
+                "property": "receivedAt"
+              }
+            ],
+            "myRights": {
+              "mayRename": false,
+              "mayAddItems": true,
+              "maySetSeen": true,
+              "maySubmit": true,
+              "mayDelete": false,
+              "mayRemoveItems": true,
+              "mayAdmin": true,
+              "maySetKeywords": true,
+              "mayReadItems": true,
+              "mayCreateChild": true
+            },
+            "sortOrder": 1,
+            "purgeOlderThanDays": 31,
+            "unreadThreads": 34,
+            "role": "inbox",
+            "suppressDuplicates": true,
+            "identityRef": null,
+            "isSubscribed": false,
+            "totalEmails": 5578,
+            "unreadEmails": 34,
+            "learnAsSpam": false,
+            "name": "Inbox",
+            "totalThreads": 4849,
+            "autoLearn": false,
+            "id": "Inbox-UUID-1234",
+            "hidden": 0,
+            "parentId": null
+          },
+          {
+            "isCollapsed": false,
+            "sort": [
+              {
+                "isAscending": false,
+                "property": "receivedAt"
+              }
+            ],
+            "autoPurge": false,
+            "sortOrder": 3,
+            "myRights": {
+              "mayCreateChild": true,
+              "maySetKeywords": true,
+              "mayReadItems": true,
+              "maySubmit": true,
+              "mayAdmin": true,
+              "mayRemoveItems": true,
+              "mayDelete": true,
+              "mayRename": true,
+              "maySetSeen": true,
+              "mayAddItems": true
+            },
+            "purgeOlderThanDays": 31,
+            "unreadThreads": 0,
+            "role": "archive",
+            "suppressDuplicates": true,
+            "identityRef": null,
+            "isSubscribed": false,
+            "totalEmails": 1,
+            "unreadEmails": 0,
+            "learnAsSpam": false,
+            "name": "Archive",
+            "id": "Archive-UUID-1234",
+            "autoLearn": false,
+            "totalThreads": 1,
+            "parentId": null,
+            "hidden": 0
+          },
+          {
+            "suppressDuplicates": true,
+            "identityRef": null,
+            "isSubscribed": false,
+            "totalEmails": 0,
+            "unreadThreads": 0,
+            "role": "drafts",
+            "purgeOlderThanDays": 31,
+            "isCollapsed": false,
+            "sort": [
+              {
+                "isAscending": false,
+                "property": "receivedAt"
+              }
+            ],
+            "autoPurge": false,
+            "myRights": {
+              "mayAddItems": true,
+              "maySetSeen": true,
+              "mayRename": true,
+              "mayRemoveItems": true,
+              "mayDelete": true,
+              "mayAdmin": true,
+              "maySubmit": true,
+              "mayReadItems": true,
+              "maySetKeywords": true,
+              "mayCreateChild": true
+            },
+            "sortOrder": 4,
+            "hidden": 0,
+            "parentId": null,
+            "name": "Drafts",
+            "id": "Drafts-UUID-1234",
+            "autoLearn": false,
+            "totalThreads": 0,
+            "learnAsSpam": false,
+            "unreadEmails": 0
+          },
+          {
+            "unreadThreads": 0,
+            "role": "junk",
+            "suppressDuplicates": true,
+            "identityRef": null,
+            "totalEmails": 0,
+            "isSubscribed": false,
+            "isCollapsed": false,
+            "sort": [
+              {
+                "isAscending": false,
+                "property": "receivedAt"
+              }
+            ],
+            "autoPurge": false,
+            "sortOrder": 6,
+            "myRights": {
+              "mayCreateChild": true,
+              "maySetKeywords": true,
+              "mayReadItems": true,
+              "maySubmit": true,
+              "mayAdmin": true,
+              "mayRemoveItems": true,
+              "mayDelete": true,
+              "mayRename": true,
+              "maySetSeen": true,
+              "mayAddItems": true
+            },
+            "purgeOlderThanDays": 31,
+            "name": "Junk Mail",
+            "autoLearn": false,
+            "id": "Junk-Mail-UUID-1234",
+            "totalThreads": 0,
+            "parentId": null,
+            "hidden": 0,
+            "unreadEmails": 0,
+            "learnAsSpam": false
+          },
+          {
+            "myRights": {
+              "mayCreateChild": true,
+              "mayReadItems": true,
+              "maySetKeywords": true,
+              "mayAdmin": true,
+              "mayRemoveItems": true,
+              "mayDelete": true,
+              "maySubmit": true,
+              "maySetSeen": true,
+              "mayAddItems": true,
+              "mayRename": true
+            },
+            "sortOrder": 5,
+            "autoPurge": false,
+            "sort": [
+              {
+                "isAscending": false,
+                "property": "receivedAt"
+              }
+            ],
+            "isCollapsed": false,
+            "purgeOlderThanDays": 31,
+            "role": "sent",
+            "unreadThreads": 0,
+            "totalEmails": 1228,
+            "isSubscribed": false,
+            "identityRef": null,
+            "suppressDuplicates": true,
+            "unreadEmails": 0,
+            "learnAsSpam": false,
+            "autoLearn": false,
+            "id": "Sent-Items-UUID-1234",
+            "totalThreads": 727,
+            "name": "Sent Items",
+            "hidden": 0,
+            "parentId": null
+          },
+          {
+            "learnAsSpam": false,
+            "unreadEmails": 0,
+            "hidden": 0,
+            "parentId": null,
+            "name": "Trash",
+            "id": "Trash-UUID-1234",
+            "autoLearn": false,
+            "totalThreads": 4,
+            "purgeOlderThanDays": 31,
+            "isCollapsed": false,
+            "sortOrder": 7,
+            "myRights": {
+              "mayReadItems": true,
+              "maySetKeywords": true,
+              "mayCreateChild": true,
+              "maySetSeen": true,
+              "mayAddItems": true,
+              "mayRename": true,
+              "mayAdmin": true,
+              "mayDelete": true,
+              "mayRemoveItems": true,
+              "maySubmit": true
+            },
+            "sort": [
+              {
+                "isAscending": false,
+                "property": "receivedAt"
+              }
+            ],
+            "autoPurge": false,
+            "identityRef": null,
+            "suppressDuplicates": true,
+            "isSubscribed": false,
+            "totalEmails": 4,
+            "unreadThreads": 0,
+            "role": "trash"
+          },
+          {
+            "purgeOlderThanDays": 31,
+            "sort": [
+              {
+                "isAscending": false,
+                "property": "receivedAt"
+              }
+            ],
+            "autoPurge": false,
+            "sortOrder": 7,
+            "myRights": {
+              "mayAdmin": true,
+              "mayRemoveItems": true,
+              "mayDelete": true,
+              "maySubmit": true,
+              "maySetSeen": true,
+              "mayAddItems": true,
+              "mayRename": true,
+              "mayCreateChild": true,
+              "mayReadItems": true,
+              "maySetKeywords": true
+            },
+            "isCollapsed": false,
+            "totalEmails": 6,
+            "isSubscribed": true,
+            "suppressDuplicates": true,
+            "identityRef": null,
+            "unreadThreads": 0,
+            "role": null,
+            "learnAsSpam": false,
+            "unreadEmails": 0,
+            "hidden": 0,
+            "parentId": null,
+            "autoLearn": false,
+            "id": "Job-UUID-1234",
+            "totalThreads": 6,
+            "name": "job"
+          }
+        ],
+        "accountId": "DUMMY-ACCOUNT-ID",
+        "notFound": []
+      },
+      0
+    ]
+  ],
+  "sessionState": "DUMMY-SESSION-STATE"
+}

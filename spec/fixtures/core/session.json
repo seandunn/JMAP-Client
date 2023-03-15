@@ -1,5 +1,5 @@
 {
-  "state": "cyrus-46184;p-25545e8ad8",
+  "state": "DUMMY-SESSION-STATE",
   "username": "test_user@email_provider.com",
   "eventSourceUrl": "https://api.email_provider.com/jmap/event/",
   "capabilities": {
@@ -20,14 +20,14 @@
     "urn:ietf:params:jmap:mail": {}
   },
   "primaryAccounts": {
-    "urn:ietf:params:jmap:core": "u11a6c4117",
-    "urn:ietf:params:jmap:mail": "u11a6c4117"
+    "urn:ietf:params:jmap:core": "DUMMY-ACCOUNT-ID",
+    "urn:ietf:params:jmap:mail": "DUMMY-ACCOUNT-ID"
   },
   "apiUrl": "https://api.email_provider.com/jmap/api/",
   "uploadUrl": "https://api.email_provider.com/jmap/upload/{accountId}/",
   "downloadUrl": "https://www.email_providerusercontent.com/jmap/download/{accountId}/{blobId}/{name}?type={type}",
   "accounts": {
-    "u11a6c4117": {
+    "DUMMY-ACCOUNT-ID": {
       "isPersonal": true,
       "isReadOnly": true,
       "name": "test_user@email_provider.com",

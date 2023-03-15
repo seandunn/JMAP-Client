@@ -13,11 +13,7 @@ RSpec.describe JMAP::Core::Client do
 
   it "Returns a Session object when initialized with a URL and bearer token." do
     stubs.get("/jmap/session") do
-      [
-        200,
-        { 'Content-Type': 'application/javascript' },
-        session_json
-      ]
+      [ 200, { 'Content-Type': 'application/javascript' }, session_json ]
     end
 
     expect(client.session.username).to eq("test_user@email_provider.com")

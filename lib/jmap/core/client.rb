@@ -4,8 +4,6 @@ require "faraday"
 
 module JMAP
   module Core
-    # A Session object holds details about the data and capabilities a server
-    # can provide to the client given based on the credentials provided.
     class Client
       attr_reader :url # The URL for the JMAP Session resource.
 
@@ -28,6 +26,12 @@ module JMAP
         response = @connection.get url
         @session = Session.new(response.body)
       end
+
+      # @returns [Array<JMAP::Mail::Mailbox>]
+      def mailboxes
+        Request.new(self, Mailbox.all)
+      end
+
 
     end
   end

@@ -4,8 +4,8 @@ require "faraday"
 
 module JMAP
   module Core
-    # A Session object holds details about the data and capabilities a server
-    # can provide to the client given based on the credentials provided.
+    # A Session object holds details about the data and capabilities a JMAP
+    # server can provide to the client based on the credentials provided.
     class Session
       ROUTE = "/jmap/session"
       attr_reader :parsed_json
