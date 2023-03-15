@@ -12,7 +12,7 @@ RSpec.shared_context "with a valid Client and Session:" do
       stubs: stubs
     )
 
-    allow(client).to receive(:session).and_return(JMAP::Core::Session.new(session_json))
+    allow(client).to receive(:session).and_return(JMAP::Plugins::Core::Session.new(session_json))
     client
   end 
 end

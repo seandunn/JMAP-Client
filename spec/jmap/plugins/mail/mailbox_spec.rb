@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe JMAP::Mail::Mailbox do
+RSpec.describe JMAP::Plugins::Mail::Mailbox do
   include_context "with a valid Client and Session:"
 
   context "When getting all Mailboxes in a Account:" do
@@ -21,7 +21,7 @@ RSpec.describe JMAP::Mail::Mailbox do
       mailboxes = client.mailboxes
 
       expect(mailboxes.size).to eq(7)
-      expect(mailboxes.first).to be_a JMAP::Mail::Mailbox
+      expect(mailboxes.first).to be_a JMAP::Plugins::Mail::Mailbox
       stubs.verify_stubbed_calls
     end
   end

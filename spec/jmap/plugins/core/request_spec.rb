@@ -2,9 +2,9 @@
 
 require "spec_helper"
 
-RSpec.describe JMAP::Core::Request do
+RSpec.describe JMAP::Plugins::Core::Request do
   it "Transforms into standard JMAP request JSON." do
-    invocation = JMAP::Core::Invocation.new(
+    invocation = JMAP::Plugins::Core::Invocation.new(
       name: "Mailbox/get",
       arguments: { "accountId": "DUMMY-ACCOUNT-ID", "ids": nil }
     )
