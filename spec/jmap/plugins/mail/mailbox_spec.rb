@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+require "jmap/plugins/mail"
 
 RSpec.describe JMAP::Plugins::Mail::Mailbox do
   include_context "with a valid Client and Session:"

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe JMAP::Plugins::Core::Client do
+RSpec.describe JMAP::Client do
   let(:url) {  "https://api.email_provider.com/jmap/session" }
   let(:token) { "TEST-BEARER-TOKEN" }
   let(:stubs)  { Faraday::Adapter::Test::Stubs.new }

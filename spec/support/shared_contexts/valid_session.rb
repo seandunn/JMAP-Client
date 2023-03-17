@@ -5,14 +5,15 @@ RSpec.shared_context "with a valid Client and Session:" do
   let(:session_json) { JSON.parse(File.read("spec/fixtures/core/session.json")) }
 
   let(:client) do
-    client = JMAP.connect(
+    stubs.get("/jmap/session") do
+      [ 200, { 'Content-Type': 'application/javascript' }, session_json ]
+    end
+
+    JMAP.connect(
       url: "https://api.email_provider.com/jmap/session" ,
       bearer_token: "TEST-BEARER-TOKEN" ,
       adapter: :test,
       stubs: stubs
     )
-
-    allow(client).to receive(:session).and_return(JMAP::Plugins::Core::Session.new(session_json))
-    client
   end 
 end

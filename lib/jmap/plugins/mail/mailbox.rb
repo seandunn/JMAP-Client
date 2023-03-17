@@ -3,7 +3,6 @@
 module JMAP
   module Plugins
     module Mail
-      CAPABILITY = "urn:ietf:params:jmap:mail"
       # A Mailbox represents a named set of Emails. This is the primary mechanism
       # for organising Emails within an account. It is analogous to a folder or
       # a label in other systems. A Mailbox may perform a certain role in the
