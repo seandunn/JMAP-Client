@@ -1,0 +1,58 @@
+{
+  "using": [ "urn:ietf:params:jmap:core", "urn:ietf:params:jmap:mail" ],
+  "methodCalls": [
+    [ "Email/query",{
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "filter": {
+        "inMailbox": "fb666a55"
+      },
+      "sort": [{
+        "isAscending": false,
+        "property": "receivedAt"
+      }],
+      "collapseThreads": true,
+      "position": 0,
+      "limit": 30,
+      "calculateTotal": true
+    }, "0" ],
+    [ "Email/get", {
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "#ids": {
+        "resultOf": "0",
+        "name": "Email/query",
+        "path": "/ids"
+      },
+      "properties": [
+        "threadId"
+      ]
+    }, "1" ],
+    [ "Thread/get", {
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "#ids": {
+        "resultOf": "1",
+        "name": "Email/get",
+        "path": "/list/*/threadId"
+      }
+    }, "2" ],
+    [ "Email/get", {
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "#ids": {
+        "resultOf": "2",
+        "name": "Thread/get",
+        "path": "/list/*/emailIds"
+      },
+      "properties": [
+        "threadId",
+        "mailboxIds",
+        "keywords",
+        "hasAttachment",
+        "from",
+        "subject",
+        "receivedAt",
+        "size",
+        "preview"
+      ]
+    }, "3" ]
+  ]
+}
+

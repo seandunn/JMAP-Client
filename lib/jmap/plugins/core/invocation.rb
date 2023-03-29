@@ -22,7 +22,7 @@ module JMAP
         attr_accessor :method_call_id
 
         def self.from_response(method_responses)
-          invocations = method_responses.map do |(name, arguments, method_call_id)|
+          method_responses.map do |(name, arguments, method_call_id)|
             new(name:, arguments:, method_call_id:).parse
           end
         end
@@ -48,6 +48,10 @@ module JMAP
 
         def to_json(*options)
           as_json(*options).to_json(*options)
+        end
+
+        def result(path:)
+          BackReference.new(result_of: method_call_id, name:, path:)
         end
 
         private

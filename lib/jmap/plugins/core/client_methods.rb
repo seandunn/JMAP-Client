@@ -19,6 +19,12 @@ module JMAP
           session.capabilities.keys
         end
 
+        def request
+          request = Request.new(account_id, capabilities)
+          yield request
+          request
+        end
+
       end
     end
   end 

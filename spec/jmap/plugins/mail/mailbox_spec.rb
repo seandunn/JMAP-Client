@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "jmap/plugins/mail"
+
+JMAP.plugin("mail")
 
 RSpec.describe JMAP::Plugins::Mail::Mailbox do
   include_context "with a valid Client and Session:"
@@ -12,7 +13,7 @@ RSpec.describe JMAP::Plugins::Mail::Mailbox do
       {
         "using": [ "urn:ietf:params:jmap:core", "urn:ietf:params:jmap:mail" ],
         "methodCalls": [
-          [ "Mailbox/get", { "accountId": "DUMMY-ACCOUNT-ID", "ids": nil }, 0 ]
+          [ "Mailbox/get", { "accountId": "DUMMY-ACCOUNT-ID", "ids": nil }, "0" ]
         ]
       }.to_json
     end

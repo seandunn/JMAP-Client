@@ -6,7 +6,7 @@ module JMAP
       module ClientMethods
         # @returns [Array<JMAP::Plugins::Mail::Mailbox>]
         def mailboxes
-          request = JMAP::Plugins::Core::Request.new(capabilities)
+          request = JMAP::Plugins::Core::Request.new(account_id, capabilities)
           request << JMAP::Plugins::Mail::Mailbox.get(self)
           res = connection.post(api_url) do |req|
             req.body = request.to_json

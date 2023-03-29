@@ -12,6 +12,7 @@ RSpec.describe JMAP::Plugins::Core::Request do
     )
 
     request = described_class.new(
+      "DUMMY-ACCOUNT-ID",
       ["urn:ietf:params:jmap:core", "urn:ietf:params:jmap:mail"]
     )
 
@@ -20,7 +21,7 @@ RSpec.describe JMAP::Plugins::Core::Request do
     expected_json = {
       "using": [ "urn:ietf:params:jmap:core", "urn:ietf:params:jmap:mail" ],
       "methodCalls": [
-        [ "Mailbox/get", { "accountId": "DUMMY-ACCOUNT-ID", "ids": nil }, 0 ]
+        [ "Mailbox/get", { "accountId": "DUMMY-ACCOUNT-ID", "ids": nil }, "0" ]
       ]
     }.to_json
 

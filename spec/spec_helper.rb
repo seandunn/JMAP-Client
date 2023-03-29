@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
+require "rspec/json_expectations"
+
 Bundler.require :tools
 
 require "simplecov"

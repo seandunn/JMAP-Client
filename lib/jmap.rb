@@ -37,6 +37,8 @@ module JMAP
       mod = PLUGINS.fetch(mod_name)
     end
 
+    mod.before_load if mod.respond_to?(:before_load)
+
     if defined?(mod::ClientMethods)
       self::Client.include(mod::ClientMethods)
     end

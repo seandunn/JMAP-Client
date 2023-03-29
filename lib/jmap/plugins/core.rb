@@ -4,6 +4,10 @@ require "jmap/plugins/core/client_methods"
 require "jmap/plugins/core/invocation"
 require "jmap/plugins/core/request"
 require "jmap/plugins/core/response"
+require "jmap/plugins/core/queryable"
+require "jmap/plugins/core/getable"
+require "jmap/plugins/core/back_reference"
+require "jmap/plugins/core/comparator"
 
 module JMAP
   module Plugins

@@ -6,6 +6,9 @@ module JMAP
       # Holds a list of method calls (Invocations) to be made against a JMAP
       # server in a single network call.
       class Request
+        # This is needs to be passed to invocations withing the request.
+        attr_reader :account_id
+
         # The set of capabilities the client wishes to use. The client MAY
         # include capability identifiers even if the method calls it makes do
         # not utilise those capabilities.
@@ -19,7 +22,8 @@ module JMAP
         # server assigned when a record was successfully created.
         attr_reader :created_ids
 
-        def initialize(capabilities)
+        def initialize(account_id, capabilities)
+          @account_id = account_id
           @using = capabilities
           @invocations = []
         end
@@ -28,7 +32,7 @@ module JMAP
         # insertion.  This is an arbitrary value which could be replaced with
         # a UUID later.
         def <<(invocation)
-          invocation.method_call_id = invocations.size
+          invocation.method_call_id = invocations.size.to_s
           invocations << invocation
         end
 
