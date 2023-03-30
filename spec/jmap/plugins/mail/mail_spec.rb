@@ -39,17 +39,16 @@ module JMAP
             Email.get(request) do |get|
               get.ids = first_30_threads.result(path: "/list/*/emailIds")
 
-              # TODO: These should be constants somewhere
               get.properties = [
-                "threadId",
-                "mailboxIds",
-                "keywords",
-                "hasAttachment",
-                "from",
-                "subject",
-                "receivedAt",
-                "size",
-                "preview"
+                Email::THREAD_ID,
+                Email::MAILBOX_IDS,
+                Email::KEYWORDS,
+                Email::HAS_ATTACHMENT,
+                Email::FROM,
+                Email::SUBJECT,
+                Email::RECEIVED_AT,
+                Email::SIZE,
+                Email::PREVIEW
               ]
             end
 

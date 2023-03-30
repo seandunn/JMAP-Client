@@ -8,6 +8,7 @@ require "jmap/plugins/core/queryable"
 require "jmap/plugins/core/getable"
 require "jmap/plugins/core/back_reference"
 require "jmap/plugins/core/comparator"
+require "jmap/plugins/core/filter_operator"
 
 module JMAP
   module Plugins
