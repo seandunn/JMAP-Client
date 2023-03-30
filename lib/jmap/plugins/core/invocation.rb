@@ -23,7 +23,7 @@ module JMAP
 
         def self.from_response(method_responses)
           method_responses.map do |(name, arguments, method_call_id)|
-            new(name:, arguments:, method_call_id:).parse
+            new(name:, arguments:, method_call_id:).parse!
           end
         end
 
@@ -35,11 +35,13 @@ module JMAP
 
         # Transforms the raw invocation arguments into a list of objects matching
         # Invocation name.
-        def parse
+        def parse!
+          @arguments = Arguments.new(arguments)
           klass = class_from_method_name
-          arguments["list"].map do |result|
-            klass.new(result)
+          @arguments.list&.map! do |item|
+            klass.new(item)
           end
+          self
         end
 
         def as_json(options=EMPTY_OPTIONS)
@@ -58,9 +60,11 @@ module JMAP
 
         def class_from_method_name
           klass_name = name.split("/").first
-          JMAP::REGISTERED_OBJECTS[klass_name]
+          JMAP::REGISTERED_OBJECTS.fetch(klass_name)
         end
 
+        class Arguments < OpenStruct
+        end
       end
     end
   end

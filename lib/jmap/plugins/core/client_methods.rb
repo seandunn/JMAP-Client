@@ -22,7 +22,14 @@ module JMAP
         def request
           request = Request.new(account_id, capabilities)
           yield request
-          request
+
+          res = connection.post(api_url) do |req|
+            req.body = request.to_json
+          end
+
+          raise BadResponseError if res.body == ""
+
+          JMAP::Plugins::Core::Response.new(res.body)
         end
 
       end

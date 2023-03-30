@@ -5,22 +5,20 @@ require "spec_helper"
 module JMAP
   module Plugins
     module Mail
+      RSpec.describe Mail  do
+        let(:expected_request_json) { JSON.parse File.read("spec/fixtures/mail/top-30-email-threads.json") }
 
-      RSpec.describe "Fetching email in a mailbox:" do
-        include_context "with a valid Client and Session:"
+        let(:response_json) {JSON.parse(File.read("spec/fixtures/mail/top-30-email-threads-response.json")) }
 
-        # A client logs in for the first time. It first fetches the set of
-        # Mailboxes. Now it will display the inbox to the user, which we will
-        # presume has Mailbox id “fb666a55”. The inbox may be (very!) large, but
-        # the user’s screen is only so big, so the client can just load the Threads
-        # it needs to fill the screen and then load in more only when the user
-        # scrolls.
-        it "Displays user's top 30 inbox." do
-          expected_json = JSON.parse File.read("spec/fixtures/mail/top-30-email-threads.json")
+        context "Working with Requests and Responses:" do
+          it "Generates a Request to display the top 30 inbox threads." do
 
-          request = client.request do |request|
+            capabilities = [ "urn:ietf:params:jmap:core", "urn:ietf:params:jmap:mail" ]
+
+            request = Core::Request.new("DUMMY-ACCOUNT-ID", capabilities)
 
             first_30_emails = Email.query(request) do |query|
+              # TODO filters should be via a value object.
               query.filter = { "inMailbox": "fb666a55" }
               query.add_sort Core::Comparator.new(is_ascending: false, property: "receivedAt")
               query.collapse_threads = true
@@ -41,6 +39,7 @@ module JMAP
             Email.get(request) do |get|
               get.ids = first_30_threads.result(path: "/list/*/emailIds")
 
+              # TODO: These should be constants somewhere
               get.properties = [
                 "threadId",
                 "mailboxIds",
@@ -54,13 +53,30 @@ module JMAP
               ]
             end
 
+            expect(request).to be_a(JMAP::Plugins::Core::Request)
+            expect(request.to_json).to include_json(expected_request_json)
           end
 
-          expect(request).to be_a(JMAP::Plugins::Core::Request)
-          expect(request.to_json).to include_json(expected_json)
-        end
-      end
+          it "Parses a Response for the top 30 inbox threads." do
+            response = JMAP::Plugins::Core::Response.new(response_json)
+            method_responses = response.method_responses
 
+            aggregate_failures do
+              expect(method_responses[0].name).to eq("Email/query")
+
+              expect(method_responses[1].name).to eq("Email/get")
+              expect(method_responses[1].arguments["list"][0]).to be_an(Email)
+
+              expect(method_responses[2].name).to eq("Thread/get")
+              expect(method_responses[2].arguments["list"][0]).to be_an(Thread)
+
+              expect(method_responses[3].name).to eq("Email/get")
+              expect(method_responses[3].arguments["list"][0]).to be_an(Email)
+            end
+          end
+        end
+
+      end
     end
   end
 end

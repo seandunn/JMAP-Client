@@ -12,7 +12,7 @@ module JMAP
           # Refactor
           def query(request)
             query = Query.new(request.account_id)
-            yield query
+            yield query if block_given?
             # Add the query to the request as an invocation line.
             # Doing so should set the invocation's method_call_id.
             invocation = Invocation.new(

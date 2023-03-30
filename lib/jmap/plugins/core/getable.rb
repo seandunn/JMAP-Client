@@ -12,8 +12,7 @@ module JMAP
           # Refactor
           def get(request)
             get = Get.new(request.account_id)
-            yield get
-
+            yield get if block_given?
             invocation = Invocation.new(
               name: "#{class_name}/get",
               arguments: get.as_json

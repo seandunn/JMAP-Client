@@ -11,16 +11,7 @@ module JMAP
       # For compatibility with IMAP, an Email MUST belong to one or more
       # Mailboxes. The Email id does not change if the Email changes Mailboxes.
       class Mailbox
-        # Get is the correct method name to fetch all mailboxes according to JMAP
-        # spec.  Aliased to .all and .find as that's probably more familiar to
-        # ruby users.
-        #
-        # TODO: Move this to a general Resource class
-        def self.get(client, ids=EMPTY_LIST)
-          name = "#{self.name.split("::").last}/get"
-          arguments = { accountId: client.account_id, ids: nil}
-          JMAP::Plugins::Core::Invocation.new(name:, arguments:)
-        end
+        include JMAP::Plugins::Core::Getable
 
         def initialize(json_hash)
           @json_hash = json_hash

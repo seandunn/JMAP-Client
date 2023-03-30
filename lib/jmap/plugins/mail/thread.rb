@@ -3,8 +3,10 @@
 module JMAP
   module Plugins
     module Mail
-      class Thread
+      class Thread < OpenStruct
         include JMAP::Plugins::Core::Getable
+
+        
       end
     end
   end
