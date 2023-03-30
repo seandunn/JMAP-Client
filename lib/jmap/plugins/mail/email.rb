@@ -10,15 +10,37 @@ module JMAP
         include JMAP::Plugins::Core::Queryable
         include JMAP::Plugins::Core::Getable
 
-        THREAD_ID = "threadId"
-        MAILBOX_IDS = "mailboxIds"
-        KEYWORDS = "keywords"
-        HAS_ATTACHMENT = "hasAttachment"
+        ATTACHMENTS = "attachments"
+        BCC = "bcc"
+        BLOB_ID = "blobIc"
+        BODY_VALUES = "bodyValues"
+        CC = "cc"
         FROM = "from"
-        SUBJECT = "subject"
-        RECEIVED_AT = "receivedAt"
-        SIZE = "size"
+        HAS_ATTACHMENT = "hasAttachment"
+        HTML_BODY = "htmlBody"
+        ID = "id"
+        IN_REPLY_TO = "inReplyTo"
+        KEYWORDS = "keywords"
+        MAILBOX_IDS = "mailboxIds"
+        MESSAGE_ID ="messageId"
         PREVIEW =  "preview"
+        RECEIVED_AT = "receivedAt"
+        REFERENCES = "references"
+        REPLY_TO = "replyTo"
+        SENDER = "sender"
+        SENT_AT = "sentAt"
+        SIZE = "size"
+        SUBJECT = "subject"
+        TEXT_BODY = "textBody"
+        THREAD_ID = "threadId"
+        TO = "to"
+
+        DEFAULT_PROPERTIES = [
+          ID, BLOB_ID, THREAD_ID, MAILBOX_IDS, KEYWORDS, SIZE,
+          RECEIVED_AT, MESSAGE_ID, IN_REPLY_TO, REFERENCES, SENDER, FROM,
+          TO, CC, BCC, REPLY_TO, SUBJECT, SENT_AT, HAS_ATTACHMENT,
+          PREVIEW, BODY_VALUES, TEXT_BODY, HTML_BODY, ATTACHMENTS 
+        ]
       end
     end
   end
