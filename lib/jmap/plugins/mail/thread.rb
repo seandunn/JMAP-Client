@@ -8,6 +8,7 @@ module JMAP
       #  MUST belong to a Thread, even if it is the only Email in the Thread.
       class Thread < OpenStruct
         include JMAP::Plugins::Core::Getable
+        include JMAP::Plugins::Core::Changeable
       end
 
     end

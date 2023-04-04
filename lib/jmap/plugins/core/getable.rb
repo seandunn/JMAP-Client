@@ -4,29 +4,16 @@ module JMAP
   module Plugins
     module Core
       module Getable
-        def self.included(base)
-          base.extend ClassMethods
+        def self.included(base) 
+          base.extend(ClassMethods)
         end
 
         module ClassMethods
-          # Refactor
-          def get(request)
-            get = Get.new(request.account_id)
-            yield get if block_given?
-            invocation = Invocation.new(
-              name: "#{class_name}/get",
-              arguments: get.as_json
-            )
+          include Core::Invocable
 
-            request << invocation
-
-            # Return the invocation so that it can be used for back references
-            # in the response.
-            invocation
+          def get(request, &block)
+            invoke(:get, request, &block)
           end
-
-          # Refactor
-          def class_name = self.name.split("::").last
         end
 
         class Get
@@ -41,11 +28,12 @@ module JMAP
           def as_json
             build = { accountId: account_id }
             build_ids(build)
-            build[:properties] = properties if properties
+            build_properties(build)
             build
           end
 
           private
+          # TODO: refactor these two build methods
           def build_ids(build)
             return unless ids
 
@@ -53,6 +41,16 @@ module JMAP
               build["#ids"] = ids
             else
               build["ids"] = ids
+            end
+          end
+
+          def build_properties(build)
+            return unless properties
+
+            if properties.is_a?(BackReference)
+              build["#properties"] = properties
+            else
+              build["properties"] = properties
             end
           end
         end

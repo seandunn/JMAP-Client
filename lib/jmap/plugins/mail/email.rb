@@ -7,8 +7,10 @@ module JMAP
       # allows clients to avoid the complexities of MIME parsing, transfer
       # encoding, and character encoding.
       class Email < OpenStruct
-        include JMAP::Plugins::Core::Queryable
+        include JMAP::Plugins::Core::Changeable
+        include JMAP::Plugins::Core::QueryChangeable
         include JMAP::Plugins::Core::Getable
+        include JMAP::Plugins::Core::Queryable
 
         ATTACHMENTS = "attachments"
         BCC = "bcc"
@@ -36,10 +38,10 @@ module JMAP
         TO = "to"
 
         DEFAULT_PROPERTIES = [
-          ID, BLOB_ID, THREAD_ID, MAILBOX_IDS, KEYWORDS, SIZE,
-          RECEIVED_AT, MESSAGE_ID, IN_REPLY_TO, REFERENCES, SENDER, FROM,
-          TO, CC, BCC, REPLY_TO, SUBJECT, SENT_AT, HAS_ATTACHMENT,
-          PREVIEW, BODY_VALUES, TEXT_BODY, HTML_BODY, ATTACHMENTS 
+          ID, BLOB_ID, THREAD_ID, MAILBOX_IDS, KEYWORDS, SIZE, RECEIVED_AT,
+          MESSAGE_ID, IN_REPLY_TO, REFERENCES, SENDER, FROM, TO, CC, BCC,
+          REPLY_TO, SUBJECT, SENT_AT, HAS_ATTACHMENT, PREVIEW, BODY_VALUES,
+          TEXT_BODY, HTML_BODY, ATTACHMENTS 
         ]
       end
     end

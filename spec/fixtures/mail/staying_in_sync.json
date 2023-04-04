@@ -1,0 +1,94 @@
+{
+  "using": [ "urn:ietf:params:jmap:core", "urn:ietf:params:jmap:mail" ],
+  "methodCalls": [
+    // Fetch a list of mailbox ids that have changed
+    [ "Mailbox/changes", {
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "sinceState": "123"
+    }, "0" ],
+
+    // Fetch any mailboxes that have been created
+    [ "Mailbox/get", {
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "#ids": {
+        "name": "Mailbox/changes",
+        "path": "/created",
+        "resultOf": "0"
+      }
+    }, "1" ],
+
+    // Fetch any mailboxes that have been updated
+    [ "Mailbox/get", {
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "#ids": {
+        "name": "Mailbox/changes",
+        "path": "/updated",
+        "resultOf": "0"
+      },
+      "#properties": {
+        "name": "Mailbox/changes",
+        "path": "/updatedProperties",
+        "resultOf": "0"
+      }
+    }, "2" ],
+
+    // Get the updated result of our previous query
+    [ "Email/queryChanges", {
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "filter": {
+        "inMailbox": "mailbox1"
+      },
+      "sort": [
+        { "property": "receivedAt", "isAscending": false }
+      ],
+      "sinceQueryState": "123:0",
+      "maxChanges": 100,
+      "upToId": "fm1u313"
+    }, "3" ],
+
+    // Fetch the threadId for emails in the update query result
+    [ "Email/get", {
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "#ids": {
+        "name": "Email/queryChanges",
+        "path": "/added",
+        "resultOf": "3"
+      },
+      "properties": [ "threadId" ]
+    }, "4" ],
+
+    // Fetch threads for those emails
+    [ "Thread/get", {
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "#ids": {
+        "name": "Email/get",
+        "path": "/list/*/threadId",
+        "resultOf": "4"
+      }
+    }, "5" ],
+
+    // Fetch emails for those threads
+    [ "Email/get", {
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "#ids": {
+        "name": "Thread/get",
+        "path": "/list/*/emailIds",
+        "resultOf": "5"
+      }
+    }, "6" ],
+
+    // Fetch a list of created/updated/deleted Emails
+    [ "Email/changes", {
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "sinceState": "123",
+      "maxChanges": 30
+    }, "7" ],
+
+    // Fetch a list of created/udpated/deleted Threads
+    [ "Thread/changes", {
+      "accountId": "DUMMY-ACCOUNT-ID",
+      "sinceState": "123",
+      "maxChanges": 30
+    }, "8" ]
+  ]
+}

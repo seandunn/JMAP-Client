@@ -11,7 +11,10 @@ module JMAP
       # For compatibility with IMAP, an Email MUST belong to one or more
       # Mailboxes. The Email id does not change if the Email changes Mailboxes.
       class Mailbox
+        include JMAP::Plugins::Core::Changeable
         include JMAP::Plugins::Core::Getable
+        include JMAP::Plugins::Core::Queryable
+        include JMAP::Plugins::Core::QueryChangeable
 
         def initialize(json_hash)
           @json_hash = json_hash

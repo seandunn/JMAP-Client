@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 
-require "jmap/plugins/core/client_methods"
-require "jmap/plugins/core/invocation"
-require "jmap/plugins/core/request"
-require "jmap/plugins/core/response"
-require "jmap/plugins/core/queryable"
-require "jmap/plugins/core/getable"
+require "jmap/plugins/core/invocable"
 require "jmap/plugins/core/back_reference"
+require "jmap/plugins/core/changeable"
+require "jmap/plugins/core/query_changeable"
+require "jmap/plugins/core/client_methods"
 require "jmap/plugins/core/comparator"
 require "jmap/plugins/core/filter_operator"
+require "jmap/plugins/core/getable"
+require "jmap/plugins/core/invocation"
+require "jmap/plugins/core/queryable"
+require "jmap/plugins/core/request"
+require "jmap/plugins/core/response"
 
 module JMAP
   module Plugins
