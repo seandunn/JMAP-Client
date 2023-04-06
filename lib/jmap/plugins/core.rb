@@ -18,12 +18,28 @@ require "jmap/plugins/core/response"
 module JMAP
   module Plugins
     module Core
+      extend Invocable
+
       CAPABILITY = "urn:ietf:params:jmap:core"
 
       # Unlike other Plugins we don't map any JMAP objects to Plugin classes.
       REGISTERED_OBJECTS = EMPTY_OPTIONS
 
       JMAP.register_plugin(CAPABILITY, self)
+
+      def self.echo(request, &block)
+        self.invoke(:echo, request, &block)
+      end
+
+      class Echo
+        attr_accessor :message
+
+        def initialize(_); end
+
+        def as_json
+          { message: message }
+        end
+      end
 
     end
   end
