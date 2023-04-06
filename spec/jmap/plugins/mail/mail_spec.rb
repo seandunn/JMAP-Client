@@ -101,7 +101,7 @@ module JMAP
             updated_query_results = Email.query_changes(request) do |query_changes|
               query_changes.filter =  { "inMailbox": "mailbox1" }
 
-              query_changes.add_sort( JMAP::Plugins::Core::Comparator.new(
+              query_changes.add_sort(JMAP::Plugins::Core::Comparator.new(
                 is_ascending: false,
                 property: "receivedAt"
               ))

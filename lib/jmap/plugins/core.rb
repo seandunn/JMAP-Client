@@ -3,6 +3,7 @@
 require "jmap/plugins/core/invocable"
 require "jmap/plugins/core/back_reference"
 require "jmap/plugins/core/changeable"
+require "jmap/plugins/core/copyable"
 require "jmap/plugins/core/query_changeable"
 require "jmap/plugins/core/client_methods"
 require "jmap/plugins/core/comparator"
