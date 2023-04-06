@@ -7,10 +7,12 @@ module JMAP
       # allows clients to avoid the complexities of MIME parsing, transfer
       # encoding, and character encoding.
       class Email < OpenStruct
-        include JMAP::Plugins::Core::Changeable
-        include JMAP::Plugins::Core::QueryChangeable
         include JMAP::Plugins::Core::Gettable
+        include JMAP::Plugins::Core::Changeable
         include JMAP::Plugins::Core::Queryable
+        include JMAP::Plugins::Core::QueryChangeable
+        include JMAP::Plugins::Core::Settable
+        include JMAP::Plugins::Core::Copyable
 
         ATTACHMENTS = "attachments"
         BCC = "bcc"

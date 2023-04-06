@@ -15,6 +15,7 @@ module JMAP
         include JMAP::Plugins::Core::Gettable
         include JMAP::Plugins::Core::Queryable
         include JMAP::Plugins::Core::QueryChangeable
+        include JMAP::Plugins::Core::Settable
 
         def initialize(json_hash)
           @json_hash = json_hash
