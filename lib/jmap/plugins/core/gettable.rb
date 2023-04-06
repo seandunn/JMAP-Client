@@ -3,7 +3,7 @@
 module JMAP
   module Plugins
     module Core
-      module Getable
+      module Gettable
         def self.included(base) 
           base.extend(ClassMethods)
         end

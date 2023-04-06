@@ -12,7 +12,7 @@ module JMAP
       # Mailboxes. The Email id does not change if the Email changes Mailboxes.
       class Mailbox
         include JMAP::Plugins::Core::Changeable
-        include JMAP::Plugins::Core::Getable
+        include JMAP::Plugins::Core::Gettable
         include JMAP::Plugins::Core::Queryable
         include JMAP::Plugins::Core::QueryChangeable
 

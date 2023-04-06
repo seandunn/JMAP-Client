@@ -9,7 +9,7 @@ module JMAP
       class Email < OpenStruct
         include JMAP::Plugins::Core::Changeable
         include JMAP::Plugins::Core::QueryChangeable
-        include JMAP::Plugins::Core::Getable
+        include JMAP::Plugins::Core::Gettable
         include JMAP::Plugins::Core::Queryable
 
         ATTACHMENTS = "attachments"
