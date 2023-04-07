@@ -56,3 +56,7 @@ module JMAP
     client
   end
 end
+
+# Always load the Core plugin.
+JMAP.plugin("core")
+

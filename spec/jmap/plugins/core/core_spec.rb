@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-JMAP.plugin("core")
-
 RSpec.describe JMAP::Plugins::Core do
   it "Can send a generic echo message to the server."  do
     expected_json = [

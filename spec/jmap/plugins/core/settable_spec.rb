@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-JMAP.plugin("core")
-
 RSpec.describe JMAP::Plugins::Core::Settable do
 
   module TestModule

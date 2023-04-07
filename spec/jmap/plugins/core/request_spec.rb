@@ -2,8 +2,6 @@
 
 require "spec_helper"
 
-JMAP.plugin("core")
-
 RSpec.describe JMAP::Plugins::Core::Request do
   it "Transforms into standard JMAP request JSON." do
     invocation = JMAP::Plugins::Core::Invocation.new(
