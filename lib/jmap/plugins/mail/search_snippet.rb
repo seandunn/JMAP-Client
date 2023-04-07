@@ -40,7 +40,7 @@ module JMAP
           self.invoke(:get, request, &block)
         end
 
-        class Get
+        class GetArguments
           attr_accessor :account_id
 
           # filter: FilterOperator|FilterCondition|null The same filter as

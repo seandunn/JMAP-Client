@@ -22,7 +22,7 @@ module JMAP
           end
         end
 
-        class Changes
+        class ChangesArguments
           # accountId: Id The id of the account to use.
           attr_reader :account_id
 

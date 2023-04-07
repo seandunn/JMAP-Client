@@ -18,7 +18,7 @@ module JMAP
 
 
         # Hold the parameters for a /query invocation.
-        class Query
+        class QueryArguments
           attr_accessor :account_id
           attr_accessor :calculate_total
           attr_accessor :collapse_threads

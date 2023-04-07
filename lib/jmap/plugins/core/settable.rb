@@ -21,7 +21,7 @@ module JMAP
           end
         end
 
-        class Set
+        class SetArguments
           # accountId: Id The id of the account to use.
           attr_accessor :account_id
 

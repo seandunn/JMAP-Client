@@ -16,7 +16,7 @@ module JMAP
           end
         end
 
-        class Get
+        class GetArguments
           attr_reader :account_id
           attr_accessor :ids
           attr_accessor :properties

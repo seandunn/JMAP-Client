@@ -31,7 +31,7 @@ module JMAP
         self.invoke(:echo, request, &block)
       end
 
-      class Echo
+      class EchoArguments
         attr_accessor :message
 
         def initialize(_); end

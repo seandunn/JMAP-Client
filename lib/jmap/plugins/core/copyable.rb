@@ -16,7 +16,7 @@ module JMAP
           end
         end
 
-        class Copy
+        class CopyArguments
           # accountId: Id The id of the account to copy records to. This MUST
           # be different to the fromAccountId.
           #

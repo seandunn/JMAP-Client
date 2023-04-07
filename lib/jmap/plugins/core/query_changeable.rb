@@ -18,7 +18,7 @@ module JMAP
           end
         end
 
-        class QueryChanges
+        class QueryChangesArguments
           # accountId: Id The id of the account to use.
           attr_reader :account_id
 

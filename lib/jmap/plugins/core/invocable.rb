@@ -5,7 +5,7 @@ module JMAP
     module Core
       module Invocable
         def invoke(method_name, request)
-          klass_name = pascalize(method_name)
+          klass_name = pascalize(method_name).concat("Arguments")
           arguments_class = self.const_get(klass_name)
           arguments_instance = arguments_class.new(request.account_id)
 
