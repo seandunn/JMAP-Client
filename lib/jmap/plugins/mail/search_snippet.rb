@@ -8,7 +8,7 @@ module JMAP
       # and to highlight any matching terms in both this and the subject of the
       # Email. Search snippets represent this data.
       class SearchSnippet
-        include JMAP::Plugins::Core::Gettable
+        extend Core::Invocable
 
         # emailId: Id The Email id the snippet applies to.
         attr_accessor :email_id
@@ -36,13 +36,31 @@ module JMAP
         # property is null.
         attr_accessor :preview
 
-        class SearchSnippetGet < Get
+        def self.get(request, &block)
+          self.invoke(:get, request, &block)
+        end
+
+        class Get
+          attr_accessor :account_id
+
           # filter: FilterOperator|FilterCondition|null The same filter as
           # passed to Email/query
           attr_accessor :filter
 
           # emailIds: Id[] The ids of the Emails to fetch snippets for.
           attr_accessor :email_ids
+
+          def initialize(account_id)
+            @account_id = account_id
+          end
+
+          def as_json
+            {
+              accountId: account_id,
+              filter: filter,
+              emailIds: email_ids
+            }
+          end
         end
       end
     end
