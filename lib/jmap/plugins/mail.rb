@@ -5,6 +5,7 @@ require "jmap/plugins/mail/email"
 require "jmap/plugins/mail/mailbox"
 require "jmap/plugins/mail/thread"
 require "jmap/plugins/mail/search_snippet"
+require "jmap/plugins/mail/identity"
 
 module JMAP
   module Plugins
