@@ -1,0 +1,5 @@
+JMAP-Client is copywrite Sean Dunn 2023.
+
+JMAP Client is licensed with the same terms as the Ruby programming language.
+
+Please see https://www.ruby-lang.org/en/about/license.txt for details.
