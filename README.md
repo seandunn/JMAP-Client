@@ -97,7 +97,14 @@ JMAP-Client supports a plugin system to provide a range of functionality:
   * [ ] JMAP Tasks
   * [ ] JMAP Quotas
 
-Plugins should be loaded automatically when you connect to a server based on the functionality
+Plugins should be loaded automatically when you connect to a server based on
+the capabilities of the JMAP server.
+
+If required plugins can be loaded manually:
+
+```ruby
+  JMAP.plugin("mail")
+```
 
 ## Development
 
