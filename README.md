@@ -47,6 +47,11 @@ As such it uses snake_case in place of the camelCase of JMAP JSON.
   
   client = JMAP.new(url: "https://jmap.server.example.com", bearer_token: "API-TOKEN-GENERATED-BY-SERVER")
   
+  # Connecting the server with a valid bearer token will return a Session object.
+  # This can be inspected using the JMAP::Client#session method but most of the
+  # time you should be able to leave the client to take care of it.
+  client.session # => JMAP::Session
+  
   # Making multiple method calls in the same request.
   response = client.request do |request|
     first_30_emails = Email.query(request) do |query|
@@ -98,9 +103,9 @@ JMAP-Client supports a plugin system to provide a range of functionality:
   * [ ] JMAP Quotas
 
 Plugins should be loaded automatically when you connect to a server based on
-the capabilities of the JMAP server.
+the capabilities reported by the JMAP server in the returned session.
 
-If required plugins can be loaded manually:
+If required, plugins can be loaded manually:
 
 ```ruby
   JMAP.plugin("mail")
