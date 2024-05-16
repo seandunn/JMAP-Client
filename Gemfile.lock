@@ -110,7 +110,8 @@ GEM
     regexp_parser (2.7.0)
     reline (0.3.2)
       io-console (~> 0.5)
-    rexml (3.2.5)
+    rexml (3.2.8)
+      strscan (>= 3.0.9)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
@@ -167,6 +168,7 @@ GEM
       refinements (~> 10.0)
       versionaire (~> 11.0)
       zeitwerk (~> 2.6)
+    strscan (3.1.0)
     thor (1.2.1)
     tty-color (0.6.0)
     unicode-display_width (2.4.2)
@@ -177,6 +179,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   amazing_print (~> 1.4)
